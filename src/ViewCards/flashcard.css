@@ -1,0 +1,21 @@
+.inline-edit,
+.inline-edit_input{
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  padding: 0;
+  background: none;
+  border: none;
+
+}
+.inline-edit {
+  cursor: pointer;
+}
+
+.inline-edit_input {
+  border-bottom: 1px dashed #666666;
+  text-align: left;
+  display: block;
+  padding-top: 12px;
+
+}
