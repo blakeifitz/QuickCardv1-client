@@ -1,11 +1,17 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
 import CardContext from "../card-context";
-import NewDeck from "../new-deck";
+import NewDeck from "../AddDeck/new-deck";
 import "./App.css";
 import ViewCard from "../ViewCards/view-cards";
 import config from "../config";
 import ViewDecks from "../ViewDecks/view-decks";
+import LandingPage from "../LandingPage/landing-page";
+import Header from "../Header/header";
+import TokenService from "../Services/token-service";
+import PrivateRoute from "../Routes/private-route";
+import PublicRoute from "../Routes/public-route";
+import RegistrationForm from "../LandingPage/signup-form";
+
 
 class App extends React.Component {
   state = {
@@ -13,27 +19,39 @@ class App extends React.Component {
     cards: [],
   };
 
-
-
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/deck`),
-      fetch(`${config.API_ENDPOINT}/card`),
-    ]).then(([deckRes, cardRes]) => {
-      if (!deckRes.ok) {
-        return deckRes.json().then((e) => Promise.reject(e));
+      fetch(`${config.API_ENDPOINT}/deck`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+      }),
+      fetch(`${config.API_ENDPOINT}/card`, {
+        method: "GET",
+        headers: {
+          "content-type": "application/json",
+          authorization: `bearer ${TokenService.getAuthToken()}`,
+        },
+      }),
+    ])
+      .then(([deckRes, cardRes]) => {
+        if (!deckRes.ok) {
+          return deckRes.json().then((e) => Promise.reject(e));
+        }
+        if (!cardRes.ok) {
+          return cardRes.json().then((e) => Promise.reject(e));
+        }
+        return Promise.all([deckRes.json(), cardRes.json()]);
+      })
+      .then(([decks, cards]) => {
+        this.setState({ decks, cards });
       }
-      if (!cardRes.ok) {
-        return cardRes.json().then((e) => Promise.reject(e));
-      }
-      return Promise.all([deckRes.json(), cardRes.json()]);
-    })
-    .then(([decks, cards]) => {
-      this.setState({ decks, cards});
-    })
-    .catch((error) => {
-     console.error({ error })
-    })
+      )
+      .catch((error) => {
+        console.error({ error });
+      });
   }
 
   handleCommitCards = (cards) => {
@@ -62,26 +80,28 @@ class App extends React.Component {
 
   handleUpdateDeck = (updatedDeck) => {
     this.setState({
-      decks: this.state.decks.map(deck => 
-        (deck.id !== updatedDeck.id) ? deck : updatedDeck
-      )
-    })
-  }
+      decks: this.state.decks.map((deck) =>
+        deck.id !== updatedDeck.id ? deck : updatedDeck
+      ),
+    });
+  };
 
   handleUpdateCard = (updatedCard, cardId) => {
     this.setState({
-      cards: this.state.cards.map(card => 
-        (card.id !== cardId) ? card : updatedCard
-      )
-    })
-  }
+      cards: this.state.cards.map((card) =>
+        card.id !== cardId ? card : updatedCard
+      ),
+    });
+  };
 
   renderMain() {
     return (
       <>
-        <Route path="/newdeck" component={NewDeck} />
-        <Route path="/deck/:deckId" component={ViewCard} />
-        <Route exact path="/deck" component={ViewDecks} />
+        <PrivateRoute path="/newdeck" component={NewDeck} />
+        <PrivateRoute path="/deck/:deckId" component={ViewCard} />
+        <PrivateRoute exact path="/deck" component={ViewDecks} />
+        <PublicRoute exact path="/account" component={RegistrationForm} />
+        <PublicRoute exact path="/" component={LandingPage} />
       </>
     );
   }
@@ -101,9 +121,7 @@ class App extends React.Component {
       <CardContext.Provider value={context}>
         <div className="App">
           <header className="App-header">
-            <Link to="/deck">
-              <h1>Quick Card</h1>
-            </Link>
+            <Header />
           </header>
           <main className="AppMain">{this.renderMain()}</main>
         </div>

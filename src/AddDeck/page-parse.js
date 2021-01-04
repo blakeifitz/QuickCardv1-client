@@ -31,13 +31,13 @@ export const PageParse = (notes = [], deckId, splitSymbol) => {
     //only push cards without undefined values
     //TODO use typeOf to ensure people can use the string "undefined"
     if (Object.values(card).indexOf(undefined || "") === -1) {
-    cards.push(card)
+      cards.push(card);
     }
   }
 
-if(cards.length !== 0){
-return cards
-}else{ 
-  return null
-}
+  if (cards.length !== 0) {
+    return cards;
+  } else {
+    return null;
+  }
 };
