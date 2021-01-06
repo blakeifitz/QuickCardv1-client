@@ -5,5 +5,10 @@ export const getCardsForDeck = (cards = [], deckId) => {
 };
 
 export const getDeckFromId = (deckId, decks) => {
-  return decks.filter((deck) => deck === deckId);
+let  deck = decks.filter((deck) => deck === deckId);
+
+if (deck){
+  return
+}else
+return null
 };

@@ -12,7 +12,7 @@ export default class ViewCard extends React.Component {
       cardNumber: 1,
     };
   }
-
+  
   static contextType = CardContext;
 
   handleNext(e) {
@@ -69,3 +69,5 @@ export default class ViewCard extends React.Component {
     );
   }
 }
+
+

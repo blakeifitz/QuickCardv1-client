@@ -1,9 +1,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import App from './app';
+import Flashcard from './flashcard';
 
-describe('<App />', () => {
+describe('<Flashcard />', () => {
  it('Renders without crashing', () => {
-     shallow(<App />);
+     shallow(<Flashcard />);
  })
 })

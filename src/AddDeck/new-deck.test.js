@@ -1,9 +1,9 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import App from './app';
+import NewDeck from './new-deck';
 
-describe('<App />', () => {
+describe('<NewDeck />', () => {
  it('Renders without crashing', () => {
-     shallow(<App />);
+     shallow(<NewDeck />);
  })
 })
