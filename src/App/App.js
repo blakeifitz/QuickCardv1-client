@@ -6,7 +6,7 @@ import ViewCard from "../ViewCards/view-cards";
 import config from "../config";
 import ViewDecks from "../ViewDecks/view-decks";
 import LandingPage from "../LandingPage/landing-page";
-import Header from "../Header/header";
+import Header from "./Header/header";
 import TokenService from "../Services/token-service";
 import PrivateRoute from "../Routes/private-route";
 import PublicRoute from "../Routes/public-route";
@@ -20,6 +20,8 @@ class App extends React.Component {
   };
 
   componentDidMount() {
+    TokenService.hasAuthToken() ? (
+
     Promise.all([
       fetch(`${config.API_ENDPOINT}/deck`, {
         method: "GET",
@@ -51,7 +53,11 @@ class App extends React.Component {
       )
       .catch((error) => {
         console.error({ error });
-      });
+      })
+          ) : (this.setState({
+            notes: [],
+            deck:[]
+          }))
   }
 
   handleCommitCards = (cards) => {

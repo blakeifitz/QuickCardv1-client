@@ -70,12 +70,10 @@ export default class Flashcard extends React.Component {
 
   renderStandard(card) {
     return !this.props.showAnswer ? (
-      <div>
-        <br />
+      <div className="content-wrapper">
         <h4>Word/Phrase:</h4>
         <p>{card.keyword ? card.keyword : ""}</p>
         <p>{card.cardNumber}</p>
-        <br />
         <button
           onClick={(e) =>
             this.setState({
@@ -87,9 +85,10 @@ export default class Flashcard extends React.Component {
         >
           Edit
         </button>
+        <h4>Click to Flip</h4>
       </div>
     ) : (
-      <div>
+      <div className="content-wrapper">
         <h4>Definition:</h4>
         <p>{card.definition}</p>
         <p>{card.cardNumber}</p>
@@ -104,6 +103,7 @@ export default class Flashcard extends React.Component {
         >
           Edit
         </button>
+        <h4>Click to Flip</h4>
       </div>
     );
   }
@@ -148,6 +148,7 @@ export default class Flashcard extends React.Component {
           <button onClick={(e) => this.setState({ ...initState })}>
             Cancel
           </button>
+          <button onClick={(e) => this.handleSave(e)}>Save</button>
           <button onClick={(e) => this.handleDelete(e)}>Delete</button>
         </div>
       </>
@@ -157,19 +158,16 @@ export default class Flashcard extends React.Component {
   render() {
     let card = this.props.card;
     return (
-      <>
-        <div className="flashcard-box">
-          {card.id === this.state.editCardId ? (
-            <div>{this.renderEdit(card)}</div>
-          ) : (
-            <div>{this.renderStandard(card)}</div>
-          )}
-          <button onClick={() => this.props.history.push("/deck")}>
-            Exit Deck
-          </button>
-          <button onClick={(e) => this.handleSave(e)}>Save</button>
-        </div>
-      </>
+      <div className="flashcard-box">
+        {card.id === this.state.editCardId ? (
+          <div>{this.renderEdit(card)}</div>
+        ) : (
+          <div>{this.renderStandard(card)}</div>
+        )}
+        <button onClick={() => this.props.history.push("/deck")}>
+          Exit Deck
+        </button>
+      </div>
     );
   }
 }

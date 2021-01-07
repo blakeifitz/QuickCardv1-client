@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import TokenService from "../Services/token-service";
+import TokenService from "../../Services/token-service";
+import "./header.css";
 
 export default class Header extends Component {
   handleLogoutClick = () => {
@@ -8,7 +9,6 @@ export default class Header extends Component {
   };
 
   renderLogoutLink() {
-    
     return (
       <div className="logged-in">
         <Link onClick={this.handleLogoutClick} to="/">

@@ -1,35 +1,29 @@
 import React, { Component } from "react";
 import TokenService from "../Services/token-service";
-import AuthService from '../Services/auth-service';
+import AuthService from "../Services/auth-service";
 
 export default class LoginForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => {}
-  }
+    onLoginSuccess: () => {},
+  };
   state = { error: null };
-
-  handleLoginSuccess = () => {
-    const { history } = this.props
-   
-    history.push('/deck')
-  }
 
   handleSubmitAuth = (ev) => {
     ev.preventDefault();
-    this.setState({ error: null })
+    this.setState({ error: null });
     const userId = ev.target["login-userId"].value;
     const password = ev.target["login-password"].value;
     AuthService.postLogin({
-          user_name: userId,
-          password: password
-        })
-          .then(res => {
-            TokenService.saveAuthToken(res.authToken)
-            this.props.onLoginSuccess()
-          })
-          .catch(res => {
-            this.setState({ error: res.error })
-          })
+      user_name: userId,
+      password: password,
+    })
+      .then((res) => {
+        TokenService.saveAuthToken(res.authToken);
+        this.props.onLoginSuccess();
+      })
+      .catch((res) => {
+        this.setState({ error: res.error });
+      });
   };
 
   render() {
@@ -38,7 +32,7 @@ export default class LoginForm extends Component {
       <form className="login" onSubmit={this.handleSubmitAuth}>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="user-id">
-          <label htmlFor="login-username">User name</label>
+          <label htmlFor="login-userId">UserName:</label>
           <input
             placeholder="User Name"
             type="text"
@@ -47,8 +41,13 @@ export default class LoginForm extends Component {
           />
         </div>
         <div className="password">
-          <label htmlFor="login-password">Password</label>
-          <input name="password" type="password" id="login-password"></input>
+          <label htmlFor="login-password">Password:</label>
+          <input
+            placeholder="password"
+            name="password"
+            type="password"
+            id="login-password"
+          ></input>
         </div>
         <button type="submit">Login</button>
       </form>

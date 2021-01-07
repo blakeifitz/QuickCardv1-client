@@ -3,6 +3,7 @@ import CardContext from "../card-context";
 import { PageParse } from "./page-parse";
 import config from "../config";
 import TokenService from "../Services/token-service";
+import "./new-deck.css";
 
 export default class NewDeck extends React.Component {
   constructor() {
@@ -89,23 +90,29 @@ export default class NewDeck extends React.Component {
           <br />
           <label htmlFor="deckName">Enter Deck Name</label>
           <br />
-          <input id="deckName" />
+          <input placeholder="Name of Deck" id="deckName" />
           <br />
           <label htmlFor="notes">Insert notes</label>
           <br />
-          <textarea id="notes"></textarea>
+          <textarea
+            placeholder='Example:"NPX: Allows for running a one time command as if it was global."(Separate cards by line return)'
+            id="notes"
+          ></textarea>
           <br />
           <label htmlFor="deckDescription">Describe Deck</label>
           <br />
-          <input id="deckDescription"></input>
+          <input
+            placeholder="What is the deck for?"
+            id="deckDescription"
+          ></input>
           <label htmlFor="note-folder-select">Split Symbol</label>
           <select id="symbol-select">
             <option value=":">:</option>
+            <option value="?">?</option>
             <option value="-">-</option>
             <option value="/">/</option>
           </select>
           <br />
-          [placeholder for screenshots to clarify Split Symbol]
           <br />
           <button>Submit</button>
         </form>

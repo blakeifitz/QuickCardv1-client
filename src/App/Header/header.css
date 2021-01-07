@@ -1,0 +1,40 @@
+
+.Header {
+  height: 40px;
+  display: flex;
+  align-items: normal;
+  justify-content: space-between;
+  padding:5px
+}
+
+.Header h1 {
+  margin: 0;
+  font-size: x-large;
+}
+
+.Header h1 a {
+  text-decoration: none;
+}
+
+.Header a {
+  color: #444;
+}
+
+.logged-out {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 450px) {
+  .Header {
+    align-items: baseline;
+  }
+  .Header h1 {
+    font-size: 22pt;
+  }
+
+  .logged-out {
+    flex-direction: row;
+  }
+
+}

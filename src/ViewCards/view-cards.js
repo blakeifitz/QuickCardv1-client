@@ -2,6 +2,7 @@ import React from "react";
 import CardContext from "../card-context";
 import Flashcard from "./flashcard";
 import { getCardsForDeck, getDeckFromId } from "../misc-functions";
+import "./view-cards.css";
 
 export default class ViewCard extends React.Component {
   constructor() {
@@ -12,7 +13,7 @@ export default class ViewCard extends React.Component {
       cardNumber: 1,
     };
   }
-  
+
   static contextType = CardContext;
 
   handleNext(e) {
@@ -39,13 +40,11 @@ export default class ViewCard extends React.Component {
   }
 
   render() {
-    const decks = this.context.decks;
     const { deckId } = this.props.match.params;
     const cards = getCardsForDeck(this.context.cards, deckId);
-    const deck = getDeckFromId(deckId, decks);
+
     return (
       <>
-        <h2>{deck.name}</h2>
         <div
           onClick={() => {
             this.setState({ showAnswer: !this.state.showAnswer });
@@ -59,15 +58,22 @@ export default class ViewCard extends React.Component {
             deck={deckId}
           />
         </div>
-        {this.state.cardNumber < cards.length && (
-          <button onClick={(e) => this.handleNext(e)}>Next</button>
-        )}
-        {this.state.cardNumber > 1 && (
-          <button onClick={(e) => this.handleBack(e)}>Back</button>
-        )}
+        <div className="card-buttons">
+          {this.state.cardNumber < cards.length && (
+            <button onClick={(e) => this.handleNext(e)}>Next</button>
+          )}
+          <button
+            onClick={() => {
+              this.setState({ showAnswer: !this.state.showAnswer });
+            }}
+          >
+            Flip
+          </button>
+          {this.state.cardNumber > 1 && (
+            <button onClick={(e) => this.handleBack(e)}>Back</button>
+          )}
+        </div>
       </>
     );
   }
 }
-
-
