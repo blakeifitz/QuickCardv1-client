@@ -8,12 +8,12 @@
 
 As a user:
 
-You can create an account to save and access secure decks of flashcards.
-You can create, delete, and edit flashcards using your notes you have already typed up.
-You can look at card by itself and switch between the front and the back.
-You can separate your keyword/phrase and definition pairs by a variety of symbols.
-You can save decks that cannot be accessed by other users.
-You can edit without leaving page.
+-You can create an account to save and access secure decks of flashcards.
+-You can create, delete, and edit flashcards using your notes you have already typed up.
+-You can look at card by itself and switch between the front and the back.
+-You can separate your keyword/phrase and definition pairs by a variety of symbols.
+-You can save decks that cannot be accessed by other users.
+-You can edit without leaving page.
 
 The Landing page will allow you to register for an account or log in to a previously existing account.
 The View Decks page will keep track of your decks, their description, and how many cards they have.
