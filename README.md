@@ -1,10 +1,10 @@
-_#QuickCard_
- *##https://quick-cardv1-client.blakeifitz.vercel.app/*
+#_QuickCard_
+ ##*https://quick-cardv1-client.blakeifitz.vercel.app/*
 
 ###This is QuickCard, an application to streamline the flashcard making process.
 
-<img align="left" src="screenshots\notes" />
-<img align="left" src="screenshots\card" />
+<img align="left" src="screenshots\notes.png" />
+<img align="left" src="screenshots\card.png" />
 
 As a user:
 
