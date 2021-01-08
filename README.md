@@ -1,12 +1,12 @@
-#_QuickCard_
- ##*https://quick-cardv1-client.blakeifitz.vercel.app/*
+# _QuickCard_
+ ## *https://quick-cardv1-client.blakeifitz.vercel.app/*
 
-###This is QuickCard, an application to streamline the flashcard making process.
+### This is QuickCard, an application to streamline the flashcard making process.
 
 <img align="left" src="screenshots\notes.png" />
 <img align="left" src="screenshots\card.png" />
 
-As a user:
+_As a user:_
 
 - You can create an account to save and access secure decks of flashcards.
 - You can create, delete, and edit flashcards using your notes you have already typed up.
