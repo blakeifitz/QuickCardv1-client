@@ -1,7 +1,7 @@
 import React from "react";
 import CardContext from "../card-context";
 import Flashcard from "./flashcard";
-import { getCardsForDeck, getDeckFromId } from "../misc-functions";
+import { getCardsForDeck} from "../misc-functions";
 import "./view-cards.css";
 
 export default class ViewCard extends React.Component {

@@ -1,5 +1,4 @@
 import config from "../config";
-import TokenService from "./token-service";
 
 const AuthService = {
   postLogin(credentials) {
@@ -7,7 +6,6 @@ const AuthService = {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        authorization: `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify(credentials),
     }).then((res) =>

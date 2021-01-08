@@ -27,10 +27,11 @@ export default class LoginForm extends Component {
   };
 
   render() {
-    const { error } = this.state;
+    // const { error } = this.state;
+    // console.log("ERROR", error)
     return (
       <form className="login" onSubmit={this.handleSubmitAuth}>
-        <div role="alert">{error && <p className="red">{error}</p>}</div>
+        {/* <div role="alert">{error && <p className="red">{error}</p>}</div> */}
         <div className="user-id">
           <label htmlFor="login-userId">UserName:</label>
           <input

@@ -19,7 +19,6 @@ export default class RegistrationForm extends Component {
       user_name.value,
       password.value
     );
-    this.setState({ error: null });
     AuthService.postUser({
       user_name: user_name.value,
       password: password.value,
@@ -46,7 +45,7 @@ export default class RegistrationForm extends Component {
         onSubmit={this.handleSubmit}
       >
         <h2>Register your account</h2>
-        <div role="alert">{error && <p className="red">{error}</p>}</div>
+      <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="full_name">
           <label htmlFor="RegistrationForm__full_name">Full name:</label>
           <input
