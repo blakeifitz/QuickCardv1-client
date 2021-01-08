@@ -31,7 +31,6 @@ export default class LandingPage extends Component {
             Simply copy and paste keywords or phrases with their definition.
             Instantly creates a deck of flash cards to study with.
           </p>
-          [placeholder for screenshots of app in use]
           <h3>
             Log in and pick up where you left off or{" "}
             <Link to="/account">Register</Link>

@@ -48,3 +48,7 @@ input[type=text], input[type=password], textarea{
   }
 
 
+  .red{
+    color:red;
+    font-weight: bold;
+}

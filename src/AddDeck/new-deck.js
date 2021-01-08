@@ -68,12 +68,11 @@ export default class NewDeck extends React.Component {
                 return cardRes.json();
               })
               .then((res) => {
-                console.log(res);
                 this.context.commitCards(res);
               })
           );
 
-          //after the data is given to server commit to state
+    
           this.props.history.push("/deck");
         })
         .catch((error) => {
