@@ -20,7 +20,7 @@ The View Decks page will keep track of your decks, their description, and how ma
 The View Card page will allow you to look at either the front or back of a card.
 
 To try out my application without creating and account use my test user, Testy McTest.
-The username is _tester_ and the password is _Password12345%_
+ username: _tester_  password: _Password12345%_
 
 
 This is my first PERN application with full CRUD operations. This is the client side of the application and uses React with vanilla css. I am using React-Router for navigation, and a combination of context and state for UI/component management. There is smoke testing implemented for all components. A custom Fav Icon using favicon.io.
