@@ -19,7 +19,7 @@ class App extends React.Component {
     cards: [],
   };
 
-  componentDidMount() {
+  handleGetDecks = () => {
     TokenService.hasAuthToken() ? (
 
     Promise.all([
@@ -116,6 +116,7 @@ class App extends React.Component {
     const context = {
       decks: this.state.decks,
       cards: this.state.cards,
+      getDecks: this.handleGetDecks,
       commitCards: this.handleCommitCards,
       commitDeck: this.handleCommitDeck,
       deleteCard: this.handleDeleteCard,

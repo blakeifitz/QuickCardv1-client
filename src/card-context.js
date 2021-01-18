@@ -4,6 +4,7 @@ const CardContext = React.createContext({
     notes:"",
     decks: [],
     cards:[],
+    getDecks:() => {},
     commitCards: () => {},
     commitDeck: () => {},
     deleteDeck: () => {},
