@@ -1,8 +1,19 @@
-input{
-  width:100%
+input, textarea{
+  width:90%;
+  margin:5px;
 }
 
 label{
   font-weight: 400;
   font-size: x-large; 
+}
+
+.inline_ss{
+  display: flex;
+  width: 95%;
+  max-width: 400px;
+  min-width: 200px;
+  height: auto;
+  padding: 5px;
+  object-fit: contain;
 }

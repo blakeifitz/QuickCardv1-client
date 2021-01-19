@@ -4,7 +4,7 @@
 ### This is QuickCard, an application to streamline the flashcard making process.
 
 <img align="left" src="screenshots\notes.png" />
-<img align="left" src="screenshots\card.png" />
+<img align="top" src="screenshots\card.png" />
 
 _As a user:_
 

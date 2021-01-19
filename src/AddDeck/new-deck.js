@@ -4,6 +4,7 @@ import { PageParse } from "./page-parse";
 import config from "../config";
 import TokenService from "../Services/token-service";
 import "./new-deck.css";
+import notesSS from "./notes-ss.png";
 
 export default class NewDeck extends React.Component {
   constructor() {
@@ -40,7 +41,6 @@ export default class NewDeck extends React.Component {
         },
         body: JSON.stringify(deck),
       })
-        //If resolve is not okay return the json error and reject promis
         .then((deckRes) => {
           if (!deckRes.ok) return deckRes.json().then((e) => Promise.reject(e));
           return deckRes.json();
@@ -59,8 +59,6 @@ export default class NewDeck extends React.Component {
                 authorization: `bearer ${TokenService.getAuthToken()}`,
               },
               body: JSON.stringify(card),
-
-              //check card resolve
             })
               .then((cardRes) => {
                 if (!cardRes.ok)
@@ -72,7 +70,6 @@ export default class NewDeck extends React.Component {
               })
           );
 
-    
           this.props.history.push("/deck");
         })
         .catch((error) => {
@@ -82,9 +79,23 @@ export default class NewDeck extends React.Component {
   };
   render() {
     return (
-      <div>
+      <section className="page">
         {this.state.errorMessage !== 0 && <p>Please add valid notes to deck</p>}
         <h2>Add Deck</h2>
+
+        <p>
+          Copy and paste your keywords/definition pairs separated by a line
+          return.
+        </p>
+        <figure>
+          <img
+            src={notesSS}
+            alt="screenshot of notes"
+            className="inline_ss"
+          ></img>
+          <figcaption>Example of note structure</figcaption>
+        </figure>
+
         <form onSubmit={this.handleSubmit}>
           <br />
           <label htmlFor="deckName">Enter Deck Name</label>
@@ -113,10 +124,14 @@ export default class NewDeck extends React.Component {
           </select>
           <br />
           <br />
-          <button>Submit</button>
+          <div className="button_group">
+            <button>Submit</button>
+            <button onClick={() => this.props.history.push("/deck")}>
+              Cancel
+            </button>
+          </div>
         </form>
-        <button onClick={() => this.props.history.push("/deck")}>Cancel</button>
-      </div>
+      </section>
     );
   }
 }

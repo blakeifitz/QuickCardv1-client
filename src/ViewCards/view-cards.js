@@ -58,7 +58,7 @@ export default class ViewCard extends React.Component {
             deck={deckId}
           />
         </div>
-        <div className="card-buttons">
+        <div className="button_group">
           {this.state.cardNumber < cards.length && (
             <button onClick={(e) => this.handleNext(e)}>Next</button>
           )}

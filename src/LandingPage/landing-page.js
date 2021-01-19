@@ -27,9 +27,9 @@ export default class LandingPage extends Component {
             deck of cards.
           </p>
           <h3>Easy.</h3>
+          <p>Just copy and paste the notes you already wrote and get back a deck of Flashcards.</p>
           <p>
-            Simply copy and paste keywords or phrases with their definition.
-            Instantly creates a deck of flash cards to study with.
+          To try out my application without creating and account use my test user, Testy McTest. username: tester password: Password12345%
           </p>
           <h3>
             Log in and pick up where you left off or{" "}

@@ -15,7 +15,6 @@ componentDidMount(){
         <>
           <h2>Your Decks</h2>
           <p>Here are all of your decks!</p>
-          <h3>List of Decks</h3>
           <RenderDecks />
           <Link to="/newdeck">
             <button className="add">Add new Deck</button>

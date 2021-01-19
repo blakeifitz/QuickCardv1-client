@@ -8,6 +8,12 @@
   border: none;
 
 }
+
+figcaption{
+  font-style: italic;
+  font-size: small;
+}
+
 .inline-edit {
   cursor: pointer;
 }
@@ -22,4 +28,16 @@
 
 ul{
   list-style: none;
+}
+
+.add{
+
+  width:auto;
+  display: flex;
+}
+
+.page{
+  display:flex;
+  text-align: center;
+  flex-direction: column;
 }

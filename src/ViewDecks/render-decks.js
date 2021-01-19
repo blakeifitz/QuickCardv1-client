@@ -6,7 +6,6 @@ import CardContext from "../card-context";
 import config from "../config";
 import TokenService from "../Services/token-service";
 
-
 export default class RenderDecks extends React.Component {
   constructor(props) {
     super(props);
@@ -22,10 +21,6 @@ export default class RenderDecks extends React.Component {
 
   static contextType = CardContext;
 
-
-
-
-
   handleSave = (e) => {
     e.preventDefault();
     const id = this.state.editDeckId;
@@ -37,12 +32,14 @@ export default class RenderDecks extends React.Component {
       method: "PATCH",
       body: JSON.stringify(updatedDeck),
       headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`,
         "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((res) => {
-        if (!res.ok) return res.json().then((error) => Promise.reject(error));
+        if (!res.ok) {
+          return res.json().then((error) => Promise.reject(error));
+        }
       })
       .then(() => {
         this.context.updateDeck(updatedDeck);
@@ -60,8 +57,8 @@ export default class RenderDecks extends React.Component {
     fetch(`${config.API_ENDPOINT}/deck/${deckId}`, {
       method: "DELETE",
       headers: {
-        authorization: `bearer ${TokenService.getAuthToken()}`,
         "content-type": "application/json",
+        authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then((res) => {
@@ -95,7 +92,7 @@ export default class RenderDecks extends React.Component {
           {deck.description}
         </span>
         <p>No. of cards: {countCards}</p>
-        <button
+        <button className="deck_buttons"
           onClick={(e) =>
             this.setState({
               editDeckId: deck.id,
@@ -116,10 +113,6 @@ export default class RenderDecks extends React.Component {
       nameInputValue: "",
       editDeckId: "",
     };
-    const cards = this.props.cards;
-    const deckId = deck.id.toString();
-    const cardsInDeck = getCardsForDeck(cards, deckId);
-    let countCards = cardsInDeck.length;
 
     return (
       <>
@@ -139,11 +132,9 @@ export default class RenderDecks extends React.Component {
           name="edit description"
           required
         />
-        <p>No. of cards: {countCards}</p>
-        {/* <p>{deck.created}</p> */}
         {this.state.editDeckId === deck.id && (
-          <div className="editModeButtons">
-            <button onClick={(e) => this.setState({ ...initState })}>
+          <div className="button_group">
+            <button  onClick={(e) => this.setState({ ...initState })}>
               Cancel
             </button>
             <button onClick={(e) => this.handleSave(e)}>Save</button>
@@ -170,7 +161,6 @@ export default class RenderDecks extends React.Component {
               </li>
             ))}
           </ul>
-
         </>{" "}
       </section>
     );

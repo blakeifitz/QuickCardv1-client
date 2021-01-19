@@ -6,3 +6,8 @@ section{
     color:red;
     font-weight: bold;
 }
+
+img{
+    margin:auto;
+    height:1 em;
+}

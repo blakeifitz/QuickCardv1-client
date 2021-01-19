@@ -71,9 +71,11 @@ export default class Flashcard extends React.Component {
   renderStandard(card) {
     return !this.props.showAnswer ? (
       <div className="content-wrapper">
+        <p>{card.cardNumber}</p>
         <h4>Word/Phrase:</h4>
         <p>{card.keyword ? card.keyword : ""}</p>
-        <p>{card.cardNumber}</p>
+        <h4>Click to Flip</h4>
+        <div className="button_group">
         <button
           onClick={(e) =>
             this.setState({
@@ -85,13 +87,18 @@ export default class Flashcard extends React.Component {
         >
           Edit
         </button>
-        <h4>Click to Flip</h4>
+        <button onClick={() => this.props.history.push("/deck")}>
+          Exit Deck
+        </button>
+        </div>
       </div>
     ) : (
       <div className="content-wrapper">
+        <p>{card.cardNumber}</p>
         <h4>Definition:</h4>
         <p>{card.definition}</p>
-        <p>{card.cardNumber}</p>
+        <h4>Click to Flip</h4>
+        <div className="button_group">
         <button
           onClick={(e) =>
             this.setState({
@@ -103,7 +110,10 @@ export default class Flashcard extends React.Component {
         >
           Edit
         </button>
-        <h4>Click to Flip</h4>
+        <button onClick={() => this.props.history.push("/deck")}>
+          Exit Deck
+        </button>
+        </div>
       </div>
     );
   }
@@ -130,7 +140,6 @@ export default class Flashcard extends React.Component {
               required
             />
           </p>
-          <p>edit</p>
           <br />
         </div>
         <div>
@@ -144,12 +153,13 @@ export default class Flashcard extends React.Component {
             name="edit-name"
             required
           />
-          <p>edit</p>
+          <div className="button_group">
           <button onClick={(e) => this.setState({ ...initState })}>
             Cancel
           </button>
           <button onClick={(e) => this.handleSave(e)}>Save</button>
           <button onClick={(e) => this.handleDelete(e)}>Delete</button>
+          </div>
         </div>
       </>
     );
@@ -164,9 +174,6 @@ export default class Flashcard extends React.Component {
         ) : (
           <div>{this.renderStandard(card)}</div>
         )}
-        <button onClick={() => this.props.history.push("/deck")}>
-          Exit Deck
-        </button>
       </div>
     );
   }
