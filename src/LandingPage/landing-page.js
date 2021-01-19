@@ -29,7 +29,7 @@ export default class LandingPage extends Component {
           <h3>Easy.</h3>
           <p>Just copy and paste the notes you already wrote and get back a deck of Flashcards.</p>
           <p>
-          To try out my application without creating and account use my test user, Testy McTest. username: tester password: Password12345%
+          To try out my application without creating and account use my test user, Testy McTest. username: <b>tester</b> password: <b>Password12345%</b>
           </p>
           <h3>
             Log in and pick up where you left off or{" "}
