@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import TokenService from "../Services/token-service";
-import AuthService from "../Services/auth-service";
+import React, { Component } from 'react';
+import TokenService from '../Services/token-service';
+import AuthService from '../Services/auth-service';
 
 export default class LoginForm extends Component {
   static defaultProps = {
@@ -11,8 +11,8 @@ export default class LoginForm extends Component {
   handleSubmitAuth = (ev) => {
     ev.preventDefault();
     this.setState({ error: null });
-    const userId = ev.target["login-userId"].value;
-    const password = ev.target["login-password"].value;
+    const userId = ev.target['login-userId'].value;
+    const password = ev.target['login-password'].value;
     AuthService.postLogin({
       user_name: userId,
       password: password,
@@ -34,6 +34,7 @@ export default class LoginForm extends Component {
         <div className="user-id">
           <label htmlFor="login-userId">UserName:</label>
           <input
+            autoComplete="current-password"
             placeholder="User Name"
             type="text"
             name="user-name"
@@ -43,6 +44,7 @@ export default class LoginForm extends Component {
         <div className="password">
           <label htmlFor="login-password">Password:</label>
           <input
+            autoComplete="current-password"
             placeholder="password"
             name="password"
             type="password"

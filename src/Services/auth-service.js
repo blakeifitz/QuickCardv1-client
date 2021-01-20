@@ -1,11 +1,11 @@
-import config from "../config";
+import config from '../config';
 
 const AuthService = {
   postLogin(credentials) {
     return fetch(`${config.API_ENDPOINT}/auth/login`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify(credentials),
     }).then((res) =>
@@ -14,9 +14,9 @@ const AuthService = {
   },
   postUser(user) {
     return fetch(`${config.API_ENDPOINT}/users`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
       body: JSON.stringify(user),
     }).then((res) =>

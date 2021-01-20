@@ -1,10 +1,10 @@
-import React from "react";
-import CardContext from "../card-context";
-import { PageParse } from "./page-parse";
-import config from "../config";
-import TokenService from "../Services/token-service";
-import "./new-deck.css";
-import notesSS from "./notes-ss.png";
+import React from 'react';
+import CardContext from '../card-context';
+import { PageParse } from './page-parse';
+import config from '../config';
+import TokenService from '../Services/token-service';
+import './new-deck.css';
+import notesSS from './notes-ss.png';
 
 export default class NewDeck extends React.Component {
   constructor() {
@@ -17,10 +17,10 @@ export default class NewDeck extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    let newNotes = e.target["notes"].value;
-    let deckName = e.target["deckName"].value;
-    let description = e.target["deckDescription"].value;
-    let splitSymbol = e.target["symbol-select"].value;
+    let newNotes = e.target['notes'].value;
+    let deckName = e.target['deckName'].value;
+    let description = e.target['deckDescription'].value;
+    let splitSymbol = e.target['symbol-select'].value;
 
     const deck = {
       deck_name: deckName,
@@ -34,10 +34,10 @@ export default class NewDeck extends React.Component {
       return this.setState({ errorMessage: 1 });
     } else {
       fetch(`${config.API_ENDPOINT}/deck`, {
-        method: "POST",
+        method: 'POST',
         headers: {
           authorization: `bearer ${TokenService.getAuthToken()}`,
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
         body: JSON.stringify(deck),
       })
@@ -53,9 +53,9 @@ export default class NewDeck extends React.Component {
           this.context.commitDeck(deck);
           cards.forEach((card) =>
             fetch(`${config.API_ENDPOINT}/card`, {
-              method: "POST",
+              method: 'POST',
               headers: {
-                "content-type": "application/json",
+                'content-type': 'application/json',
                 authorization: `bearer ${TokenService.getAuthToken()}`,
               },
               body: JSON.stringify(card),
@@ -70,7 +70,7 @@ export default class NewDeck extends React.Component {
               })
           );
 
-          this.props.history.push("/deck");
+          this.props.history.push('/deck');
         })
         .catch((error) => {
           console.error({ error });
@@ -115,7 +115,8 @@ export default class NewDeck extends React.Component {
             placeholder="What is the deck for?"
             id="deckDescription"
           ></input>
-          <label htmlFor="note-folder-select">Split Symbol</label>
+
+          <label htmlFor="symbol-select">Split Symbol</label>
           <select id="symbol-select">
             <option value=":">:</option>
             <option value="?">?</option>
@@ -126,7 +127,7 @@ export default class NewDeck extends React.Component {
           <br />
           <div className="button_group">
             <button>Submit</button>
-            <button onClick={() => this.props.history.push("/deck")}>
+            <button onClick={() => this.props.history.push('/deck')}>
               Cancel
             </button>
           </div>

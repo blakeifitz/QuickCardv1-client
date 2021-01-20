@@ -1,14 +1,14 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./view-decks.css";
-import RenderDecks from "./render-decks";
-import CardContext from "../card-context";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './view-decks.css';
+import RenderDecks from './render-decks';
+import CardContext from '../card-context';
 
 export default class ViewDecks extends React.Component {
   static contextType = CardContext;
-componentDidMount(){
-  this.context.getDecks();
-}
+  componentDidMount() {
+    this.context.getDecks();
+  }
   render() {
     return (
       <section className="page" id="viewDecks">
@@ -19,7 +19,7 @@ componentDidMount(){
           <Link to="/newdeck">
             <button className="add">Add new Deck</button>
           </Link>
-        </>{" "}
+        </>{' '}
       </section>
     );
   }

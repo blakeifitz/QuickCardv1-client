@@ -1,16 +1,16 @@
-import React from "react";
-import CardContext from "../card-context";
-import config from "../config";
-import TokenService from "../Services/token-service";
-import "./flashcard.css";
+import React from 'react';
+import CardContext from '../card-context';
+import config from '../config';
+import TokenService from '../Services/token-service';
+import './flashcard.css';
 export default class Flashcard extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      definitionInputValue: "",
-      keywordInputValue: "",
-      editCardId: "",
+      definitionInputValue: '',
+      keywordInputValue: '',
+      editCardId: '',
     };
   }
   static contextType = CardContext;
@@ -19,10 +19,10 @@ export default class Flashcard extends React.Component {
     e.preventDefault();
     const CardId = parseFloat(this.state.editCardId);
     fetch(`${config.API_ENDPOINT}/card/${CardId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`,
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
     })
       .then((res) => {
@@ -47,11 +47,11 @@ export default class Flashcard extends React.Component {
     let deck = this.props.deck;
     const updatedCard = { id, keyword, definition, deck };
     fetch(`${config.API_ENDPOINT}/Card/${CardId}`, {
-      method: "PATCH",
+      method: 'PATCH',
       body: JSON.stringify(updatedCard),
       headers: {
         authorization: `bearer ${TokenService.getAuthToken()}`,
-        "content-type": "application/json",
+        'content-type': 'application/json',
       },
     })
       .then((res) => {
@@ -60,7 +60,7 @@ export default class Flashcard extends React.Component {
       .then(() => {
         this.context.updateCard(updatedCard, CardId);
         this.setState({
-          editCardId: "",
+          editCardId: '',
         });
       })
       .catch((error) => {
@@ -73,23 +73,23 @@ export default class Flashcard extends React.Component {
       <div className="content-wrapper">
         <p>{card.cardNumber}</p>
         <h4>Word/Phrase:</h4>
-        <p>{card.keyword ? card.keyword : ""}</p>
+        <p>{card.keyword ? card.keyword : ''}</p>
         <h4>Click to Flip</h4>
         <div className="button_group">
-        <button
-          onClick={(e) =>
-            this.setState({
-              editCardId: card.id,
-              keywordInputValue: card.keyword,
-              definitionInputValue: card.definition,
-            })
-          }
-        >
-          Edit
-        </button>
-        <button onClick={() => this.props.history.push("/deck")}>
-          Exit Deck
-        </button>
+          <button
+            onClick={(e) =>
+              this.setState({
+                editCardId: card.id,
+                keywordInputValue: card.keyword,
+                definitionInputValue: card.definition,
+              })
+            }
+          >
+            Edit
+          </button>
+          <button onClick={() => this.props.history.push('/deck')}>
+            Exit Deck
+          </button>
         </div>
       </div>
     ) : (
@@ -99,29 +99,29 @@ export default class Flashcard extends React.Component {
         <p>{card.definition}</p>
         <h4>Click to Flip</h4>
         <div className="button_group">
-        <button
-          onClick={(e) =>
-            this.setState({
-              editCardId: card.id,
-              keywordInputValue: card.keyword,
-              definitionInputValue: card.definition,
-            })
-          }
-        >
-          Edit
-        </button>
-        <button onClick={() => this.props.history.push("/deck")}>
-          Exit Deck
-        </button>
+          <button
+            onClick={(e) =>
+              this.setState({
+                editCardId: card.id,
+                keywordInputValue: card.keyword,
+                definitionInputValue: card.definition,
+              })
+            }
+          >
+            Edit
+          </button>
+          <button onClick={() => this.props.history.push('/deck')}>
+            Exit Deck
+          </button>
         </div>
       </div>
     );
   }
   renderEdit(card) {
     const initState = {
-      definitionInputValue: "",
-      keywordInputValue: "",
-      editCardId: "",
+      definitionInputValue: '',
+      keywordInputValue: '',
+      editCardId: '',
     };
     return (
       <>
@@ -129,7 +129,7 @@ export default class Flashcard extends React.Component {
           <br />
           <h4>Word/Phrase:</h4>
           <p>
-            {" "}
+            {' '}
             <input
               value={this.state.keywordInputValue}
               onChange={(e) =>
@@ -143,7 +143,7 @@ export default class Flashcard extends React.Component {
           <br />
         </div>
         <div>
-          <h4>Definition:</h4>{" "}
+          <h4>Definition:</h4>{' '}
           <textarea
             value={this.state.definitionInputValue}
             onChange={(e) =>
@@ -154,11 +154,11 @@ export default class Flashcard extends React.Component {
             required
           />
           <div className="button_group">
-          <button onClick={(e) => this.setState({ ...initState })}>
-            Cancel
-          </button>
-          <button onClick={(e) => this.handleSave(e)}>Save</button>
-          <button onClick={(e) => this.handleDelete(e)}>Delete</button>
+            <button onClick={(e) => this.setState({ ...initState })}>
+              Cancel
+            </button>
+            <button onClick={(e) => this.handleSave(e)}>Save</button>
+            <button onClick={(e) => this.handleDelete(e)}>Delete</button>
           </div>
         </div>
       </>
@@ -181,8 +181,8 @@ export default class Flashcard extends React.Component {
 Flashcard.defaultProps = {
   card: [
     {
-      keyword: "",
-      definition: "",
+      keyword: '',
+      definition: '',
       cardNumber: 1,
     },
   ],

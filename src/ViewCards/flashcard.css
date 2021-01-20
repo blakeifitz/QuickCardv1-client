@@ -1,12 +1,11 @@
 .inline-edit,
-.inline-edit_input{
+.inline-edit_input {
   font: inherit;
   color: inherit;
   text-align: inherit;
   padding: 0;
   background: none;
   border: none;
-
 }
 .inline-edit {
   cursor: pointer;
@@ -17,7 +16,6 @@
   text-align: left;
   display: block;
   padding-top: 12px;
-
 }
 .content-wrapper {
   display: flex;
@@ -26,9 +24,9 @@
   justify-content: center;
   align-items: center;
   width: auto;
-  box-shadow: 2px 3px 23px rgba(0,0,0,.1);
-	transform-style: preserve-3d;
+  box-shadow: 2px 3px 23px rgba(0, 0, 0, 0.1);
+  transform-style: preserve-3d;
   margin-top: 4em;
   transition: 0.2s;
-  background: url(./cardBg.png); 
+  background: url(./cardBg.png);
 }

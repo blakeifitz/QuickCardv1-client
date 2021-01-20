@@ -1,54 +1,53 @@
-input[type=text], input[type=password], textarea{
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: vertical;
-  }
-  input[type=text]:focus , input[type=password]:focus {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    resize: vertical;
-    background-color: rgba(233, 224, 201, 0.6);
-    border: 3px solid #555;
-  }
-  
-  label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
-  }
-  
+input[type='text'],
+input[type='password'],
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+input[type='text']:focus,
+input[type='password']:focus {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+  background-color: rgba(233, 224, 201, 0.6);
+  border: 3px solid #555;
+}
 
-  input[type=submit] {
-    background-color: rgba(226, 226, 226, 0.6);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    float: right;
-  }
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
 
-  .container {
-    border-radius: 5px;
-    background-color: rgba(226, 226, 226, 0.6);
-    padding: 20px;
-  }
-  
+input[type='submit'] {
+  background-color: rgba(226, 226, 226, 0.6);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
 
+.container {
+  border-radius: 5px;
+  background-color: rgba(226, 226, 226, 0.6);
+  padding: 20px;
+}
 
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
 
-
-  .red{
-    color:red;
-    font-weight: bold;
+.red {
+  color: red;
+  font-weight: bold;
 }

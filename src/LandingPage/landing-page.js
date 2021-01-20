@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import LoginForm from "./login-form";
-import { Link } from "react-router-dom";
-import "./landing-page.css";
-import CardContext from "../card-context";
+import React, { Component } from 'react';
+import LoginForm from './login-form';
+import { Link } from 'react-router-dom';
+import './landing-page.css';
+import CardContext from '../card-context';
 
 export default class LandingPage extends Component {
   static contextType = CardContext;
@@ -14,7 +14,7 @@ export default class LandingPage extends Component {
   };
   handleLoginSuccess = () => {
     const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/deck";
+    const destination = (location.state || {}).from || '/deck';
     history.push(destination);
   };
   render() {
@@ -27,12 +27,17 @@ export default class LandingPage extends Component {
             deck of cards.
           </p>
           <h3>Easy.</h3>
-          <p>Just copy and paste the notes you already wrote and get back a deck of Flashcards.</p>
           <p>
-          To try out my application without creating and account use my test user, Testy McTest. username: <b>tester</b> password: <b>Password12345%</b>
+            Just copy and paste the notes you already wrote and get back a deck
+            of Flashcards.
+          </p>
+          <p>
+            To try out my application without creating and account use my test
+            user, Testy McTest. username: <b>tester</b> password:{' '}
+            <b>Password12345%</b>
           </p>
           <h3>
-            Log in and pick up where you left off or{" "}
+            Log in and pick up where you left off or{' '}
             <Link to="/account">Register</Link>
           </h3>
           <LoginForm onLoginSuccess={this.handleLoginSuccess} />

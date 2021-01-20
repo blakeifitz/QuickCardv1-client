@@ -1,14 +1,15 @@
-input, textarea{
-  width:90%;
-  margin:5px;
+input,
+textarea {
+  width: 90%;
+  margin: 5px;
 }
 
-label{
+label {
   font-weight: 400;
-  font-size: x-large; 
+  font-size: x-large;
 }
 
-.inline_ss{
+.inline_ss {
   display: flex;
   width: 95%;
   max-width: 400px;

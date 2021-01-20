@@ -1,19 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./view-decks.css";
-import { getCardsForDeck } from "../misc-functions";
-import CardContext from "../card-context";
-import config from "../config";
-import TokenService from "../Services/token-service";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './view-decks.css';
+import { getCardsForDeck } from '../misc-functions';
+import CardContext from '../card-context';
+import config from '../config';
+import TokenService from '../Services/token-service';
 
 export default class RenderDecks extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      descriptionInputValue: "",
-      nameInputValue: "",
-      editDeckId: "",
+      descriptionInputValue: '',
+      nameInputValue: '',
+      editDeckId: '',
       decks: [],
       cards: [],
     };
@@ -29,10 +29,10 @@ export default class RenderDecks extends React.Component {
     const deckId = parseFloat(this.state.editDeckId);
     const updatedDeck = { id, deck_name, description };
     fetch(`${config.API_ENDPOINT}/deck/${deckId}`, {
-      method: "PATCH",
+      method: 'PATCH',
       body: JSON.stringify(updatedDeck),
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
@@ -44,7 +44,7 @@ export default class RenderDecks extends React.Component {
       .then(() => {
         this.context.updateDeck(updatedDeck);
         this.setState({
-          editDeckId: "",
+          editDeckId: '',
         });
       })
       .catch((error) => {
@@ -55,9 +55,9 @@ export default class RenderDecks extends React.Component {
   handleClickDelete = () => {
     const deckId = parseFloat(this.state.editDeckId);
     fetch(`${config.API_ENDPOINT}/deck/${deckId}`, {
-      method: "DELETE",
+      method: 'DELETE',
       headers: {
-        "content-type": "application/json",
+        'content-type': 'application/json',
         authorization: `bearer ${TokenService.getAuthToken()}`,
       },
     })
@@ -92,7 +92,8 @@ export default class RenderDecks extends React.Component {
           {deck.description}
         </span>
         <p>No. of cards: {countCards}</p>
-        <button className="deck_buttons"
+        <button
+          className="deck_buttons"
           onClick={(e) =>
             this.setState({
               editDeckId: deck.id,
@@ -109,9 +110,9 @@ export default class RenderDecks extends React.Component {
 
   renderEdit(deck) {
     const initState = {
-      descriptionInputValue: "",
-      nameInputValue: "",
-      editDeckId: "",
+      descriptionInputValue: '',
+      nameInputValue: '',
+      editDeckId: '',
     };
 
     return (
@@ -134,7 +135,7 @@ export default class RenderDecks extends React.Component {
         />
         {this.state.editDeckId === deck.id && (
           <div className="button_group">
-            <button  onClick={(e) => this.setState({ ...initState })}>
+            <button onClick={(e) => this.setState({ ...initState })}>
               Cancel
             </button>
             <button onClick={(e) => this.handleSave(e)}>Save</button>
@@ -161,7 +162,7 @@ export default class RenderDecks extends React.Component {
               </li>
             ))}
           </ul>
-        </>{" "}
+        </>{' '}
       </section>
     );
   }

@@ -1,13 +1,13 @@
-section{
-    background-color: rgba(226, 226, 226, 0.6);
+section {
+  background-color: rgba(226, 226, 226, 0.6);
 }
 
-.red{
-    color:red;
-    font-weight: bold;
+.red {
+  color: red;
+  font-weight: bold;
 }
 
-img{
-    margin:auto;
-    height:1 em;
+img {
+  margin: auto;
+  height: 1 em;
 }

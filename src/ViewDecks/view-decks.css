@@ -1,15 +1,14 @@
 .inline-edit,
-.inline-edit_input{
+.inline-edit_input {
   font: inherit;
   color: inherit;
   text-align: inherit;
   padding: 0;
   background: none;
   border: none;
-
 }
 
-figcaption{
+figcaption {
   font-style: italic;
   font-size: small;
 }
@@ -23,21 +22,19 @@ figcaption{
   text-align: left;
   display: block;
   padding-top: 12px;
-
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-.add{
-
-  width:auto;
+.add {
+  width: auto;
   display: flex;
 }
 
-.page{
-  display:flex;
+.page {
+  display: flex;
   text-align: center;
   flex-direction: column;
 }

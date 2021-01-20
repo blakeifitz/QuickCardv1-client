@@ -1,17 +1,16 @@
-import React from "react";
-import CardContext from "../card-context";
-import NewDeck from "../AddDeck/new-deck";
-import "./App.css";
-import ViewCard from "../ViewCards/view-cards";
-import config from "../config";
-import ViewDecks from "../ViewDecks/view-decks";
-import LandingPage from "../LandingPage/landing-page";
-import Header from "./Header/header";
-import TokenService from "../Services/token-service";
-import PrivateRoute from "../Routes/private-route";
-import PublicRoute from "../Routes/public-route";
-import RegistrationForm from "../LandingPage/signup-form";
-
+import React from 'react';
+import CardContext from '../card-context';
+import NewDeck from '../AddDeck/new-deck';
+import './App.css';
+import ViewCard from '../ViewCards/view-cards';
+import config from '../config';
+import ViewDecks from '../ViewDecks/view-decks';
+import LandingPage from '../LandingPage/landing-page';
+import Header from './Header/header';
+import TokenService from '../Services/token-service';
+import PrivateRoute from '../Routes/private-route';
+import PublicRoute from '../Routes/public-route';
+import RegistrationForm from '../LandingPage/signup-form';
 
 class App extends React.Component {
   state = {
@@ -20,45 +19,43 @@ class App extends React.Component {
   };
 
   handleGetDecks = () => {
-    TokenService.hasAuthToken() ? (
-
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/deck`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${TokenService.getAuthToken()}`,
-        },
-      }),
-      fetch(`${config.API_ENDPOINT}/card`, {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          authorization: `bearer ${TokenService.getAuthToken()}`,
-        },
-      }),
-    ])
-      .then(([deckRes, cardRes]) => {
-        if (!deckRes.ok) {
-          return deckRes.json().then((e) => Promise.reject(e));
-        }
-        if (!cardRes.ok) {
-          return cardRes.json().then((e) => Promise.reject(e));
-        }
-        return Promise.all([deckRes.json(), cardRes.json()]);
-      })
-      .then(([decks, cards]) => {
-        this.setState({ decks, cards });
-      }
-      )
-      .catch((error) => {
-        console.error({ error });
-      })
-          ) : (this.setState({
-            notes: [],
-            deck:[]
-          }))
-  }
+    TokenService.hasAuthToken()
+      ? Promise.all([
+          fetch(`${config.API_ENDPOINT}/deck`, {
+            method: 'GET',
+            headers: {
+              'content-type': 'application/json',
+              authorization: `bearer ${TokenService.getAuthToken()}`,
+            },
+          }),
+          fetch(`${config.API_ENDPOINT}/card`, {
+            method: 'GET',
+            headers: {
+              'content-type': 'application/json',
+              authorization: `bearer ${TokenService.getAuthToken()}`,
+            },
+          }),
+        ])
+          .then(([deckRes, cardRes]) => {
+            if (!deckRes.ok) {
+              return deckRes.json().then((e) => Promise.reject(e));
+            }
+            if (!cardRes.ok) {
+              return cardRes.json().then((e) => Promise.reject(e));
+            }
+            return Promise.all([deckRes.json(), cardRes.json()]);
+          })
+          .then(([decks, cards]) => {
+            this.setState({ decks, cards });
+          })
+          .catch((error) => {
+            console.error({ error });
+          })
+      : this.setState({
+          notes: [],
+          deck: [],
+        });
+  };
 
   handleCommitCards = (cards) => {
     this.setState({
@@ -103,6 +100,7 @@ class App extends React.Component {
   renderMain() {
     return (
       <>
+        [//Private routes will redirect to landing page if user is unauthorized]
         <PrivateRoute path="/newdeck" component={NewDeck} />
         <PrivateRoute path="/deck/:deckId" component={ViewCard} />
         <PrivateRoute exact path="/deck" component={ViewDecks} />
