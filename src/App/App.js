@@ -100,7 +100,6 @@ class App extends React.Component {
   renderMain() {
     return (
       <>
-        [//Private routes will redirect to landing page if user is unauthorized]
         <PrivateRoute path="/newdeck" component={NewDeck} />
         <PrivateRoute path="/deck/:deckId" component={ViewCard} />
         <PrivateRoute exact path="/deck" component={ViewDecks} />
@@ -109,7 +108,7 @@ class App extends React.Component {
       </>
     );
   }
-
+  //Private routes will redirect to landing page if user is unauthorized
   render() {
     const context = {
       decks: this.state.decks,
