@@ -87,7 +87,7 @@ export default class RenderDecks extends React.Component {
       <>
         <span className="inline-edit">
           <Link to={`/deck/${deck.id}`}>
-            <h4>{deck.deck_name}</h4>
+            <h3>{deck.deck_name}</h3>
           </Link>
           {deck.description}
         </span>
@@ -151,7 +151,7 @@ export default class RenderDecks extends React.Component {
     return (
       <section className="page" id="viewDecks">
         <>
-          <ul>
+          <ul className="form_wrapper">
             {decks.map((deck) => (
               <li key={deck.id}>
                 {deck.id === this.state.editDeckId ? (

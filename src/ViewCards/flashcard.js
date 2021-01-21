@@ -2,7 +2,7 @@ import React from 'react';
 import CardContext from '../card-context';
 import config from '../config';
 import TokenService from '../Services/token-service';
-import './flashcard.css';
+import './view-cards.css';
 export default class Flashcard extends React.Component {
   constructor(props) {
     super(props);
@@ -70,11 +70,15 @@ export default class Flashcard extends React.Component {
 
   renderStandard(card) {
     return !this.props.showAnswer ? (
-      <div className="content-wrapper">
-        <p>{card.cardNumber}</p>
-        <h4>Word/Phrase:</h4>
-        <p>{card.keyword ? card.keyword : ''}</p>
-        <h4>Click to Flip</h4>
+      <>
+        <div className="content-wrapper">
+          <p>{card.cardNumber}</p>
+          <span className="card_info">
+            <h4>Word/Phrase:</h4>
+            <p>{card.keyword ? card.keyword : ''}</p>
+            <h4>Click to Flip</h4>
+          </span>
+        </div>
         <div className="button_group">
           <button
             onClick={(e) =>
@@ -87,17 +91,18 @@ export default class Flashcard extends React.Component {
           >
             Edit
           </button>
-          <button onClick={() => this.props.history.push('/deck')}>
-            Exit Deck
-          </button>
         </div>
-      </div>
+      </>
     ) : (
-      <div className="content-wrapper">
-        <p>{card.cardNumber}</p>
-        <h4>Definition:</h4>
-        <p>{card.definition}</p>
-        <h4>Click to Flip</h4>
+      <>
+        <div className="content-wrapper">
+          <p>{card.cardNumber}</p>
+          <span className="card_info">
+            <h4>Definition:</h4>
+            <p>{card.definition}</p>
+            <h4>Click to Flip</h4>
+          </span>
+        </div>
         <div className="button_group">
           <button
             onClick={(e) =>
@@ -110,11 +115,8 @@ export default class Flashcard extends React.Component {
           >
             Edit
           </button>
-          <button onClick={() => this.props.history.push('/deck')}>
-            Exit Deck
-          </button>
         </div>
-      </div>
+      </>
     );
   }
   renderEdit(card) {

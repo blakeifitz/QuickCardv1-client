@@ -20,12 +20,13 @@ export default class ViewCard extends React.Component {
     e.preventDefault();
     return this.setState({
       cardNumber: this.state.cardNumber + 1,
+      showAnswer: false,
     });
   }
 
   handleBack(e) {
     e.preventDefault();
-    this.setState({ cardNumber: this.state.cardNumber - 1 });
+    this.setState({ cardNumber: this.state.cardNumber - 1, showAnswer: false });
   }
 
   getCurrentCard() {
@@ -62,16 +63,12 @@ export default class ViewCard extends React.Component {
           {this.state.cardNumber < cards.length && (
             <button onClick={(e) => this.handleNext(e)}>Next</button>
           )}
-          <button
-            onClick={() => {
-              this.setState({ showAnswer: !this.state.showAnswer });
-            }}
-          >
-            Flip
-          </button>
           {this.state.cardNumber > 1 && (
             <button onClick={(e) => this.handleBack(e)}>Back</button>
           )}
+          <button onClick={() => this.props.history.push('/deck')}>
+            Exit Deck
+          </button>
         </div>
       </>
     );

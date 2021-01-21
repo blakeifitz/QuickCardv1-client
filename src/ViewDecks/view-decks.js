@@ -12,14 +12,14 @@ export default class ViewDecks extends React.Component {
   render() {
     return (
       <section className="page" id="viewDecks">
-        <>
+        <div className="container">
           <h2>Your Decks</h2>
           <p>Here are all of your decks!</p>
           <RenderDecks />
           <Link to="/newdeck">
             <button className="add">Add new Deck</button>
           </Link>
-        </>{' '}
+        </div>{' '}
       </section>
     );
   }

@@ -29,7 +29,6 @@ export default class NewDeck extends React.Component {
     };
 
     let cards = PageParse(newNotes, 0, splitSymbol);
-
     if (!cards) {
       return this.setState({ errorMessage: 1 });
     } else {
@@ -80,12 +79,11 @@ export default class NewDeck extends React.Component {
   render() {
     return (
       <section className="page">
-        {this.state.errorMessage !== 0 && <p>Please add valid notes to deck</p>}
         <h2>Add Deck</h2>
 
         <p>
-          Copy and paste your keywords/definition pairs separated by a line
-          return.
+          Copy and paste your keyword/definition pairs separated by a line
+          return. Keyword/definition pairs must be on the same line.
         </p>
         <figure>
           <img
@@ -95,8 +93,13 @@ export default class NewDeck extends React.Component {
           ></img>
           <figcaption>Example of note structure</figcaption>
         </figure>
-
-        <form onSubmit={this.handleSubmit}>
+        {this.state.errorMessage !== 0 && (
+          <p className="red">
+            No cards were able to be created. Please check the formatting of
+            your notes.
+          </p>
+        )}
+        <form className="form_wrapper" onSubmit={this.handleSubmit}>
           <br />
           <label htmlFor="deckName">Enter Deck Name</label>
           <br />

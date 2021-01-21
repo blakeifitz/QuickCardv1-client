@@ -29,7 +29,7 @@ export default class LoginForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <form className="login" onSubmit={this.handleSubmitAuth}>
+      <form className="form_wrapper" onSubmit={this.handleSubmitAuth}>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="user-id">
           <label htmlFor="login-userId">UserName:</label>

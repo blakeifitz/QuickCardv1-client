@@ -1,0 +1,26 @@
+let card = {};
+  let cards = [];
+  for (var i = 0; i < keywords.length; i++) {
+    let result = true;
+    card = {
+      deck: deckId,
+      keyword: keywords[i],
+      definition: definitions[i],
+    };
+    console.log('CARD TO CHECK', card);
+    Object.values(card).map((value) => {
+      if (typeof value === 'undefined') {
+        result = false;
+      }
+    });
+    if (result === true) {
+      console.log('PUSHED');
+    }
+    //only push cards without undefined values to weed out misformatted and accidental cards
+    //TODO use typeOf to ensure people can use the string "undefined"
+  }
+  if (cards.length !== 0) {
+    return cards;
+  }
+  return null;
+};

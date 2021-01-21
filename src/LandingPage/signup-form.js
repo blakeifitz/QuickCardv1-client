@@ -33,10 +33,7 @@ export default class RegistrationForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <form
-        className="RegistrationForm, container"
-        onSubmit={this.handleSubmit}
-      >
+      <form className="form_wrapper" onSubmit={this.handleSubmit}>
         <h2>Register your account</h2>
         <div role="alert">{error && <p className="red">{error}</p>}</div>
         <div className="full_name">
