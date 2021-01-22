@@ -103,8 +103,9 @@ class App extends React.Component {
         <PrivateRoute path="/newdeck" component={NewDeck} />
         <PrivateRoute path="/deck/:deckId" component={ViewCard} />
         <PrivateRoute exact path="/deck" component={ViewDecks} />
+        <PrivateRoute exact path="/" component={ViewDecks} />
         <PublicRoute exact path="/account" component={RegistrationForm} />
-        <PublicRoute exact path="/" component={LandingPage} />
+        <PublicRoute exact path="/quick" component={LandingPage} />
       </>
     );
   }

@@ -1,13 +1,18 @@
 section {
   background-color: rgba(226, 226, 226, 0.6);
 }
+img {
+  margin: auto;
+  height: 1 em;
+}
 
 .red {
   color: red;
   font-weight: bold;
 }
 
-img {
-  margin: auto;
-  height: 1 em;
+.test_login {
+  font-size: larger;
+  font-weight: bolder;
+  font-style: oblique;
 }

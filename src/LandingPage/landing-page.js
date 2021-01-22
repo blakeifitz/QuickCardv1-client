@@ -32,9 +32,11 @@ export default class LandingPage extends Component {
             of Flashcards.
           </p>
           <p>
-            To try out my application without creating and account use my test
-            user, Testy McTest. username: <b>tester</b> password:{' '}
-            <b>Password12345%</b>
+            <span className="test_login">
+              To try out my application without creating an account use my test
+              user, Testy McTest. username: <b>tester</b> password:{' '}
+              <b>Password12345%</b>
+            </span>
           </p>
           <h3>
             Log in and pick up where you left off or{' '}

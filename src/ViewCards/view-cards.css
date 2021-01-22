@@ -30,7 +30,7 @@
   transition: 0.3s;
   background: url(./cardBg.png);
   font-size: 2.5vw;
-  overflow: scroll;
+  overflow: auto;
 }
 .content-wrapper p {
   font-weight: bold;

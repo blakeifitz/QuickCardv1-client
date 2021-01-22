@@ -13,7 +13,7 @@ export default function PrivateRoute({ component, ...props }) {
         ) : (
           <Redirect
             to={{
-              pathname: '/',
+              pathname: '/quick',
               state: { from: componentProps.location },
             }}
           />

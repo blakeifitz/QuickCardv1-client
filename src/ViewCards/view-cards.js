@@ -60,11 +60,11 @@ export default class ViewCard extends React.Component {
           />
         </div>
         <div className="button_group">
-          {this.state.cardNumber < cards.length && (
-            <button onClick={(e) => this.handleNext(e)}>Next</button>
-          )}
           {this.state.cardNumber > 1 && (
             <button onClick={(e) => this.handleBack(e)}>Back</button>
+          )}
+          {this.state.cardNumber < cards.length && (
+            <button onClick={(e) => this.handleNext(e)}>Next</button>
           )}
           <button onClick={() => this.props.history.push('/deck')}>
             Exit Deck
