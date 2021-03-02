@@ -54,7 +54,6 @@ export default class ViewCard extends React.Component {
           <Flashcard
             card={this.getCurrentCard()}
             history={this.props.history}
-            nextCard={this.handleNext}
             showAnswer={this.state.showAnswer}
             deck={deckId}
           />
